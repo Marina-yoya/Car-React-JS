@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import './registration.css'
+import { Navigate } from 'react-router-dom';
 
-function Registration() {
+import './login.css';
+
+function Login() {
   const [formData, setFormData] = useState({
-    username: '',
     email: '',
     password: '',
-    c_password: '', 
   });
+
+  const [error, setError] = useState('');
+  const [isLoggedIn, setLoggedIn] = useState(false); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,40 +24,38 @@ function Registration() {
     e.preventDefault();
 
     const formDataToSend = new FormData();
-    formDataToSend.append('name', formData.username);
     formDataToSend.append('email', formData.email);
     formDataToSend.append('password', formData.password);
-    formDataToSend.append('c_password', formData.c_password);
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/register', {
+      const response = await fetch('http://127.0.0.1:8000/api/login', {
         method: 'POST',
         body: formDataToSend,
       });
 
       if (response.ok) {
         const data = await response.json();
-        console.log('Registration successful:', data);
+        console.log('Login successful:', data);
+        setLoggedIn(true);
       } else {
         const errorData = await response.json();
-        console.error('Registration failed:', errorData);
+        console.log(errorData.message)
+        setError('Wrong credentials. Please try again.');
       }
     } catch (error) {
       console.error('Error:', error);
     }
   };
 
+  if (isLoggedIn) {
+    return <Navigate to="/userdashboard" />;
+  }
+
   return (
-    <div className="registration-container">
-      <h2>Register</h2>
-      <form className="registration-form" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          value={formData.username}
-          onChange={handleChange}
-        />
+    <div className="login-container">
+      <h2>Login</h2>
+      {error && <div className="error-message">{error}</div>}
+      <form className="login-form" onSubmit={handleSubmit}>
         <input
           type="email"
           name="email"
@@ -69,18 +70,10 @@ function Registration() {
           value={formData.password}
           onChange={handleChange}
         />
-        <input
-          type="password" 
-          name="c_password"
-          placeholder="Confirm Password"
-          value={formData.c_password}
-          onChange={handleChange}
-        />
-        <button type="submit">Register</button>
+        <button type="submit">Login</button>
       </form>
     </div>
   );
 }
 
-export default Registration;
-
+export default Login;
