@@ -11,6 +11,7 @@ function Login() {
 
   const [error, setError] = useState('');
   const [isLoggedIn, setLoggedIn] = useState(false); 
+  const [userId, setUserId] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,6 +37,10 @@ function Login() {
       if (response.ok) {
         const data = await response.json();
         console.log('Login successful:', data);
+        const token = data.data.token;
+        console.log(data.data.token)
+        localStorage.setItem('token', token);
+        setUserId(data.data.id);
         setLoggedIn(true);
       } else {
         const errorData = await response.json();
@@ -48,7 +53,7 @@ function Login() {
   };
 
   if (isLoggedIn) {
-    return <Navigate to="/userdashboard" />;
+    return <Navigate to={`/userdashboard/${userId}`} />;
   }
 
   return (
