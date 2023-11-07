@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './registration.css'
 
 function Registration() {
@@ -78,6 +79,9 @@ function Registration() {
         />
         <button type="submit">Register</button>
       </form>
+      <p>
+      Already have an account? <Link to="/login">Login here</Link>
+    </p>
     </div>
   );
 }

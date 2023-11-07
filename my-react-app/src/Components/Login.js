@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 
 import './login.css';
 
-function Login() {
+function Login({ onLogin }) {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -12,7 +12,7 @@ function Login() {
   const [error, setError] = useState('');
   const [isLoggedIn, setLoggedIn] = useState(false); 
   const [userId, setUserId] = useState(null);
-
+  const [isAuthenticated, setIsAuthenticated] = useState(false); 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -42,6 +42,8 @@ function Login() {
         localStorage.setItem('token', token);
         setUserId(data.data.id);
         setLoggedIn(true);
+        setIsAuthenticated(true);
+        onLogin(data);
       } else {
         const errorData = await response.json();
         console.log(errorData.message)
@@ -77,6 +79,9 @@ function Login() {
         />
         <button type="submit">Login</button>
       </form>
+      <p>
+      Don't have an account? <Link to="/register">Register here</Link>
+    </p>
     </div>
   );
 }

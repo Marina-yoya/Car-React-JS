@@ -1,0 +1,38 @@
+.car-list {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  p a {
+    color: #808080; 
+    text-decoration: none; 
+  }
+  
+  .car-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .car-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 10px;
+    width: 250px;
+    padding: 10px;
+  }
+  
+  .car-image img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .car-details {
+    font-size: 18px;
+  }
+  

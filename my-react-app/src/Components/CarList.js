@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import './carlist.css'
 
 function CarList() {
   const [cars, setCars] = useState([]);
@@ -11,8 +13,8 @@ function CarList() {
 
         if (response.ok) {
           const carData = await response.json();
-          console.log(carData)
-          setCars(carData);
+          setCars(carData.data);
+          console.log(carData.data)
         } else {
           console.error('Failed to fetch cars data');
         }
@@ -32,16 +34,25 @@ function CarList() {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <ul>
-          {cars.data.map((car) => (
-            <li key={car.id}>
-              <strong>{car.make}</strong> - {car.model}
-            </li>
+        <div className="car-cards">
+          {cars.map((car) => (
+            <div key={car.id} className="car-card">
+              <div className="car-image">
+                <img src="https://www.willow-car-sales.co.uk/wp-content/uploads/2019/11/placeholder-image-1.jpg" alt="Car" />
+              </div>
+              <div className="car-details">
+                <strong>{car.brand}</strong> - {car.model}
+              </div>
+              <p>
+                <Link to={`/cardetails/${car.id}`}>View Details</Link>
+              </p>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );
 }
 
 export default CarList;
+
