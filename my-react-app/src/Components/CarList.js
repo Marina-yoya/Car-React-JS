@@ -38,7 +38,7 @@ function CarList() {
           {cars.map((car) => (
             <div key={car.id} className="car-card">
               <div className="car-image">
-                <img src="https://www.willow-car-sales.co.uk/wp-content/uploads/2019/11/placeholder-image-1.jpg" alt="Car" />
+                <img src="/car.jpeg" alt="Car" />
               </div>
               <div className="car-details">
                 <strong>{car.brand}</strong> - {car.model}

@@ -7,6 +7,7 @@ import Login from './Components/Login';
 import UserDashboard from './Components/UserDashboard';
 import CarList from './Components/CarList';
 import CarDetails from './Components/CarDetails';
+import AddCar from './Components/AddCar';
 
 function App() {
 
@@ -24,12 +25,12 @@ function App() {
       <div className="App">
         <Navbar isAuthenticated={isAuthenticated} userId={userId} />
         <Routes>
-          <Route path="/register" element={<Registration />} />
+          <Route path="/" element={<Registration />} />
           <Route path="/login" element={<Login onLogin={handleSuccessfulLogin} />} />
           <Route path="/userdashboard/:id" element={<UserDashboard />} />
           <Route path="/carlist" element={<CarList />} />
           <Route path="/cardetails/:id" element={<CarDetails />} />
-
+          <Route path="/addcar" element={<AddCar userId={userId} />} />
 
         </Routes>
 

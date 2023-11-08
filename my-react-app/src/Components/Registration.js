@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './registration.css'
 
 function Registration() {
+
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     username: '',
     email: '',
     password: '',
     c_password: '', 
   });
+
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,18 +41,23 @@ function Registration() {
       if (response.ok) {
         const data = await response.json();
         console.log('Registration successful:', data);
+        navigate('/login');
       } else {
         const errorData = await response.json();
         console.error('Registration failed:', errorData);
+        setErrorMessage('Registration failed.');
+        
       }
     } catch (error) {
       console.error('Error:', error);
+      console.log(errorMessage)
     }
   };
 
   return (
     <div className="registration-container">
       <h2>Register</h2>
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
       <form className="registration-form" onSubmit={handleSubmit}>
         <input
           type="text"

@@ -1,0 +1,63 @@
+.add-car {
+    position: absolute;
+    top: 25%;
+    left: 35%;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+  }
+  
+  .add-car h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .add-car-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .add-car-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .add-car-form button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .add-car-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .success-message,
+  .error-message {
+    text-align: center;
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  
+  .success-message {
+    color: #8dbb89;
+    background-color: #E6FFEC;
+  }
+  
+  .error-message {
+    color: #FF0000;
+    background-color: #FFE2E2;
+  }
+  

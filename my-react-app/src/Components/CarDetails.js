@@ -19,7 +19,7 @@ function CarDetails() {
             model: carData.data[0].model,
             year: carData.data[0].year,
           });
-          setLoading(false); 
+          setLoading(false);
         } else {
           console.error('Failed to fetch car details');
         }
@@ -40,7 +40,7 @@ function CarDetails() {
         <div className="car-cards">
           <div className="car-card">
             <div className="car-image">
-              <img src="https://www.willow-car-sales.co.uk/wp-content/uploads/2019/11/placeholder-image-1.jpg" alt="Car" />
+              <img src="/car.jpeg" alt="Car" />
             </div>
             <div className="car-details">
               <strong>{carDetails.make}</strong> - {carDetails.model}

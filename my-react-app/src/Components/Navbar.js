@@ -14,7 +14,7 @@ function Navbar({ isAuthenticated, userId }) {
         {!isAuthenticated && (
           <>
             <li>
-              <Link to="/register">Register</Link>
+              <Link to="/">Register</Link>
             </li>
             <li>
               <Link to="/login">Login</Link>
@@ -26,6 +26,9 @@ function Navbar({ isAuthenticated, userId }) {
 
             <li>
               <Link to="/carlist">Car List</Link>
+            </li>
+            <li>
+              <Link to="/addcar">Add Car</Link>
             </li>
             <li onClick={handleDashboardClick}>
               <Link to={`/userdashboard/${userId}`}>Dashboard</Link>

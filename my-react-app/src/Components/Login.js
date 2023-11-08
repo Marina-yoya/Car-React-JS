@@ -10,9 +10,9 @@ function Login({ onLogin }) {
   });
 
   const [error, setError] = useState('');
-  const [isLoggedIn, setLoggedIn] = useState(false); 
+  const [isLoggedIn, setLoggedIn] = useState(false);
   const [userId, setUserId] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false); 
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -80,8 +80,8 @@ function Login({ onLogin }) {
         <button type="submit">Login</button>
       </form>
       <p>
-      Don't have an account? <Link to="/register">Register here</Link>
-    </p>
+        Don't have an account? <Link to="/">Register here</Link>
+      </p>
     </div>
   );
 }
